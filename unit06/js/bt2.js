@@ -1,0 +1,10 @@
+const a1 = -2;
+const a2 = 5;
+const b1 = -9;
+const b2 = 7;
+const c1 = -3;
+const c2 = 9;
+const x1=  ((c1)-(b1))/a1
+const x2=  ((c2)-(b2))/a2
+console.log(`X1 = ${x1}`)
+console.log(`X2 = ${x2}`)
