@@ -1,10 +1,11 @@
-const a1 = -2;
-const a2 = 5;
-const b1 = -9;
-const b2 = 7;
-const c1 = -3;
-const c2 = 9;
-const x1=  ((c1)-(b1))/a1
-const x2=  ((c2)-(b2))/a2
-console.log(`X1 = ${x1}`)
-console.log(`X2 = ${x2}`)
+// Bài 2: Giải phương trình bậc 1:
+// - Input: Cho phương trình bậc 1 dạng ax + b = c (a, b, c là tham số đầu vào)
+// - Output: Tìm x
+// Data test:
+// + Data 1: -2x – 9 = -3
+// + Data 2: 5x + 7 = 9
+function timX(a, b, c) {
+	return c - b / a;
+}
+var x = timX (-2, -9, -3);
+console.log(`Gia tri cua X la ${x}`)

@@ -1,45 +1,15 @@
-const a1 = 12;
-const b1 = -9;
-const a2 = 6;
-const b2 = 6;
-const a3 = -189;
-const b3 = -987;
-const a4 = -78;
-const b4 = 56;
-const a5 = 9.5;
-const b5 = 7.9;
-if (a1 > b1) {
-    console.log(`${a1} la so lon nhat`);
-} else if (a1 < b1) {
-    console.log(`${b1} la so lon nhat`);
-} else{
-    console.log('hai so bang nhau');
+// Bài 4: Tìm số lớn nhất trong hai số
+// - Input: Cho hai số
+// - Tìm số lớn nhất trong hai số và in ra thông báo hợp lý dưới dạng ‘N là số lớn nhất’ với N là số lớn nhất
+// Data test:
+// + Data 1: a = 12, b = -9
+function max(a, b) {
+    if (a > b) {
+       console.log(`${a} la so lon nhat`)
+    }else if (a < b) {
+        console.log(`${b} la so lon nhat`)
+    }else {
+        console.log(`${a} va ${b} bang nhau`)
+    }
 }
-if (a2 > b2) {
-    console.log(`${a2} la so lon nhat`);
-} else if (a2 < b2) {
-    console.log(`${b2} la so lon nhat`);
-} else{
-    console.log('hai so bang nhau');
-}
-if (a3 > b3) {
-    console.log(`${a3} la so lon nhat`);
-} else if (a3 < b3) {
-    console.log(`${b3} la so lon nhat`);
-} else{
-    console.log('hai so bang nhau');
-}
-if (a4 > b4) {
-    console.log(`${a4} la so lon nhat`);
-} else if (a4 < b4) {
-    console.log(`${b4} la so lon nhat`);
-} else{
-    console.log('hai so bang nhau');
-}
-if (a5 > b5) {
-    console.log(`${a5} la so lon nhat`);
-} else if (a5 < b5) {
-    console.log(`${b5} la so lon nhat`);
-} else{
-    console.log('hai so bang nhau');
-}
+max(12, -9);

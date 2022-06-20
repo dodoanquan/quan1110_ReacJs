@@ -1,94 +1,38 @@
-const team1 = "Dolphin";
-const a1=96;
-const b1=108;
-const c1=89;
-const Tb1Team1 = (a1+b1+c1)/3
-
-const team2 = "Koala";
-const d1=88;
-const e1=91;
-const f1=110;
-const Tb1Team2 = (d1+e1+f1)/3
-// DATa1
+// Bài 3:
+// Có hai đội thể dục là Dolphins và Koalas. Họ cạnh tranh với từng 3 lần khác.
+// Người chiến thắng với điểm số trung bình cao nhất sẽ giành được cúp!
+// Yêu cầu:
+// - Tính điểm trung bình của mỗi đội
+// - So sánh điểm trung bình của đội để xác định đội chiến thắng trong cuộc thi và in ra đội chiến thắng.
+// Đừng quên rằng có thể có một trận hòa, vì vậy hãy kiểm tra điều đó (hòa có nghĩa là họ có cùng điểm trung bình)
+// - Yêu cầu về số điểm tối thiểu là 100. Với quy tắc này, một đội chỉ thắng nếu có số điểm cao hơn
+// đội còn lại, đồng thời phải đạt ít nhất 100 điểm. Với yêu cầu này hãy tìm đội thắng. Nếu không có đội thắng hãy in ra thông báo hợp lệ (Không có đội thắng cuộc)
+// - Điểm số tối thiểu cũng áp dụng cho một trận hòa! Vì vậy kết quả hòa chỉ xảy ra khi cả hai đội có số điểm
+// bằng nhau và cả hai đều có số điểm lớn hơn hoặc bằng 100 điểm. Nếu không, không đội nào giành được cúp
+// Data test:
+// + Data 1: Dolphins có điểm là 96, 108 và89. Koalas có điểm là 88, 91 và 110
+function diemTrungBinh(a, b, c){
+	return (a + b + c) / 3;
+}
+var pointA = diemTrungBinh(96, 108, 89);
+var pointB = diemTrungBinh(88, 91, 110);
 //a DIEMTRUNGBINH
-console.log(`Diem trung binh cua Dolphin la ${Tb1Team1}`)
-console.log(`Diem trung binh cua Koala la ${Tb1Team2}`)
+console.log(`Diem trung binh cua Dolphin la ${pointA}`)
+console.log(`Diem trung binh cua Koala la ${pointB}`)
 //b
-if (Tb1Team1 > Tb1Team2) {
-	console.log( `${team1} la doi chien thang`)
-}else if (Tb1Team1 < Tb1Team2){
-	console.log( `${team2} la doi chien thang`)
-}else{
+if (pointA > pointB) {
+	console.log( `Dolphins la doi chien thang`)
+}else if (pointA < pointB) {
+	console.log( `Koalas la doi chien thang`)
+}else {
 	console.log( `2 doi hoa nhau`)
 }
 // c vs d
-if (Tb1Team1 > Tb1Team2 && Tb1Team1>= 100) {
-	console.log( `${team1} la doi chien thang`)
-}else if (Tb1Team2 > Tb1Team1 && Tb1Team2 >=100){
-	console.log( `${team2} la doi chien thang`)
-}else if (Tb1Team1 == Tb1Team2 && Tb1Team2 >=100){
-	console.log( `2 doi hoa nhau`)
-}else{
-	console.log( `Khong co doi thang cuoc`)
-}
-
-// DATa2
-const a2=97;
-const b2=112;
-const c2=101;
-const d2=109;
-const e2=95;
-const f2=123;
-const Tb2Team1 = (a2+b2+c2)/3
-const Tb2Team2 = (d2+e2+f2)/3
-//a DIEMTRUNGBINH
-console.log(`Diem trung binh cua Dolphin la ${Tb2Team1}`)
-console.log(`Diem trung binh cua Koala la ${Tb2Team2}`)
-//b
-if (Tb2Team1 > Tb2Team2) {
-	console.log( `${team1} la doi chien thang`)
-}else if (Tb2Team1 < Tb2Team2){
-	console.log( `${team2} la doi chien thang`)
-}else{
-	console.log( `2 doi hoa nhau`)
-}
-// c vs d
-if (Tb2Team1 > Tb2Team2 && Tb2Team1>= 100) {
-	console.log( `${team1} la doi chien thang`)
-}else if (Tb2Team2 > Tb2Team1 && Tb2Team2 >=100){
-	console.log( `${team2} la doi chien thang`)
-}else if (Tb2Team1 == Tb2Team2 && Tb2Team2 >=100){
-	console.log( `2 doi hoa nhau`)
-}else{
-	console.log( `Khong co doi thang cuoc`)
-}
-
-// DATa3
-const a3=97;
-const b3=112;
-const c3=101;
-const d3=109;
-const e3=95;
-const f3=106;
-const Tb3Team1 = (a3+b3+c3)/3
-const Tb3Team2 = (d3+e3+f3)/3
-//a DIEMTRUNGBINH
-console.log(`Diem trung binh cua Dolphin la ${Tb3Team1}`)
-console.log(`Diem trung binh cua Koala la ${Tb3Team2}`)
-//b
-if (Tb3Team1 > Tb3Team2) {
-	console.log( `${team1} la doi chien thang`)
-}else if (Tb3Team1 < Tb3Team2){
-	console.log( `${team2} la doi chien thang`)
-}else{
-	console.log( `2 doi hoa nhau`)
-}
-// c vs d
-if (Tb3Team1 > Tb3Team2 && Tb3Team1>= 100) {
-	console.log( `${team1} la doi chien thang`)
-}else if (Tb3Team2 > Tb3Team1 && Tb3Team2 >=100){
-	console.log( `${team2} la doi chien thang`)
-}else if (Tb3Team1 == Tb3Team2 && Tb3Team2 >=100){
+if (pointA > pointB && pointA >= 100) {
+	console.log( `Dolphins la doi chien thang`)
+}else if (pointB > pointA && pointB >=100){
+	console.log( `Koalas la doi chien thang`)
+}else if (pointA == pointB && pointB >=100){
 	console.log( `2 doi hoa nhau`)
 }else{
 	console.log( `Khong co doi thang cuoc`)
