@@ -1,3 +1,6 @@
+// Bài 1:
+// - Input: Cho vào chuỗi bất kì
+// - Output: Đếm xem chuỗi đó có bao nhiêu nguyên âm (Nguyên âm là a, e, I, o, u)
 function count(text) {
 	let lowerCase = text.toLowerCase();
 	let countVowel = 0;

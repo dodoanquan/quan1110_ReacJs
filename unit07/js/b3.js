@@ -1,3 +1,6 @@
+// Bài 3:
+// - Input: Cho 1 mảng
+// - Tính tổng mảng đó (dùng for, reduce …. Tất cả các cách để tính tổng mảng đó)
 function sum(array = []){
 	let sum1 = 0;
 	let sum2 = 0;
