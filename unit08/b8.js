@@ -29,30 +29,33 @@ const characters = [
     },
 ];
 // + Lấy mảng gồm tất cả names
-let resultNames = characters.map((item, index) => {
-    return item.name;
+let resultNames = characters.map(({name}) => {
+    return `${name}`;
 })
 console.log(resultNames)
 // + Lấy mảng gồm tất cả height
-let resultHeights = characters.map((item, index) => {
-    return item.height;
+let resultHeights = characters.map(({height}) => {
+    return `${height}`;
 })
 console.log(resultHeights)
 // + Tìm những người có height nhỏ hơn 100
-console.log(characters.filter((item) => {
-    return (item.height)*1 < 100
+console.log(characters.filter(({height}) => {
+    return (`${height}`)*1 < 100
 }))
 // + Tìm những người có mass lớn hơn 100
-console.log(characters.filter((item) => {
-    return (item.mass)*1 > 100
+console.log(characters.filter(({mass}) => {
+    return (`${mass}`)*1 > 100
 }))
 // + Sắp xếp mảng theo name, mass, hieght, theo giới tính (gender)
-let newArr = characters.map((item, index) => {
-    return {
-        name: item.name,
-        mass: item.mass,
-        height: item.height,
-        gender: item.gender
-    }
+const sortName = characters.sort((a, b) => {
+    if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
+    else if (a.name === b.name) return 0
+    return -1
 })
-console.log(newArr)
+console.log(sortName)
+
+// Tuong tu
+
+
+
+

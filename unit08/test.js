@@ -133,7 +133,7 @@ const resultMap = characters.map((item, index) => {
 })
 console.log(resultMap)
 
-// Filter
+// Filter : lọc ra gtri thỏa mãn điều kiện , mảng mới
 const filterArr = [2, 7, 9, 12]
 console.log(filterArr.filter((item) => {
 	return item % 2 === 0
@@ -204,7 +204,9 @@ const {app: {arr1: [, c2]}} = obj
 console.log(c2)
 
 
-
+// el => el : Truthy và Falsy
+// T: chuỗi khác rỗng, số khác 0 và tất cả các object. // Bao gồm cả [ ] và { } vì mảng rỗng và chuỗi rỗng vẫn là object.
+// falsy: undefined, null, false, 0, -0, 0n, NaN, 
 
 
 

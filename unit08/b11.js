@@ -5,7 +5,7 @@ user = {
     ho : 'do',
     ten : 'quan'
 }
-function displayName(x = {}) {
-    return console.log(x.ho, x.ten)
+function displayName({ho, ten}) {
+    return `${ho} ${ten}`
 }
-displayName(user);
+console.log(displayName(user))

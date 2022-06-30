@@ -4,12 +4,12 @@
 // Data test:
 let colors = ["white", "blue", "yellow", "black", "red", "green"];
 
-function obj(a) {
+function obj([white, blue, ...rest]) {
     let newArr = []
     newArr.push({
-        "firstColor": a[0],
-        "secondColor":  a[1],
-        "otherColors": a.slice(2)
+        "firstColor": white,
+        "secondColor": blue,
+        "otherColors": rest
     })
     return newArr
 }
