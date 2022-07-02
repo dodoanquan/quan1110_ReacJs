@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Read More</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			box-sizing: border-box;
+		}
+		body{
+			background-color: #353b48;
+			color:white;
+		}
+		.header{
+			text-align: center;
+			font-size:50px;
+			margin:50px 0;
+			color:#eb4d4b;
+			font-weight: bold;
+			font-style: italic;
+		}
+		.container{
+			background-color: #57606f;
+			width: 25%;
+			height: 400px;
+		}
+		.description{
+			padding:20px 20px 0 20px;
+			border-top:0.5px solid black;
+		}
+		.name, .title{
+			text-align: center;
+			font-size:25px;
+			padding:5px 0;
+			color: #f0932b;
+			font-weight: bold;
+		}
+		.wrap {
+			display: flex;
+			justify-content: space-around;
+		}
+		button{
+			margin-left:20px;
+			border:none;
+			color:#eb4d4b;
+			font-size:20px;
+			background: #57606f;
+			font-weight: bold;
+			display:block;
+		}
+		.readless{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		Read More
+	</div>
+	<div class="wrap">
+		<div class="container">
+			<div class="name"></div>
+			<div class="title"></div>
+			<div class="description">
+			</div>
+			<button class="readmore">Readmore</button>
+			<button class="readless">Readless</button>
+		</div>
+		<div class="container">
+			<div class="name"></div>
+			<div class="title"></div>
+			<div class="description"></div>
+			<button class="readmore">Readmore</button>
+			<button class="readless">Readless</button>
+		</div>
+		<div class="container">
+			<div class="name"></div>
+			<div class="title"></div>
+			<div class="description"></div>
+			<button class="readmore">Readmore</button>
+			<button class="readless">Readless</button>
+		</div>
+	</div>
+	<script>
+		const articles = [
+		{
+			name: "Neuer",
+			title: "Học Javascript như thế nào",
+			description:`An array of odd numbers.
+			An array of numbers divisible by 2 or 5.
+			An array of numbers divisible by 3 and then squared those numbers.
+			The sum of the following: square the numbers divisible by 5.`
+		},
+		{
+			name: "Neuer Goretzka",
+			title: "Học React như thế nào",
+			description:`An array of odd numbers.
+			An array of numbers divisible by 2 or 5.
+			An array of numbers divisible by 3 and then squared those numbers.
+			The sum of the following: square the numbers divisible by 5.
+			The sum of the following: square the numbers divisible by 5.
+			The sum of the following: square the numbers divisible by 5.`
+		},
+		{
+			name: "Goretzka Neuer",
+			title: "Làm thế nào để trở lên tốt hơn",
+			description: `An array of odd numbers.
+			An array of numbers divisible by 2 or 5.
+			An array of numbers divisible by 3 and then squared those numbers.
+			The sum of the following: square the numbers divisible by 5.
+			The sum of the following: square the numbers divisible by 5.
+			The sum of the following: square the numbers divisible by 5.
+			The sum of the following: square the numbers divisible by 5.
+			The sum of the following: square the numbers divisible by 5.`
+		},
+		]
+		for (let i in articles){
+			const postName = document.getElementsByClassName("name")[i].innerHTML =  articles[i].name
+			const postTitle = document.getElementsByClassName("title")[i].innerHTML =  articles[i].title
+			const readMore = document.getElementsByClassName("readmore")[i]
+			if(readMore.style.display = "block"){
+				const postDesc = document.getElementsByClassName("description")[i].innerHTML =  articles[i].description.slice(0, 50)
+			}
+			const readLess = document.getElementsByClassName("readless")[i];
+			readMore.addEventListener('click', function() {
+				readLess.style.display = "block"
+				readMore.style.display = "none"
+				document.getElementsByClassName("description")[i].innerHTML = articles[i].description.slice(0, )
+			})
+			readLess.addEventListener('click', function() {
+				readLess.style.display = "none"
+				readMore.style.display = "block"
+				document.getElementsByClassName("description")[i].innerHTML = articles[i].description.slice(0, 50)
+			})
+		}
+	</script>
+</body>
+</html>
