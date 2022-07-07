@@ -93,40 +93,30 @@
 			border-radius: 50%;
 			display:none;
 		}
+		.none{
+			display:none;
+		}
 	</style>
 	<title>Test</title>
 </head>
 <body>
 	<h1>Question</h1>
 	<main>
-		<form action="#" id="form">
-			<div class="question-wrap">
-				<div class="question"></div>
-			</div>
-			<div class="answer-wrap">
-				<div class="answers">
-					<input type="radio" id="answer-a" value="a" name="answer">
-					<label for="answer-a" id="answer1"></label>
-				</div>
-				<div class="answers">
-					<input type="radio" id="answer-b" value="b" name="answer">
-					<label for="answer-b" id="answer2"></label>
-				</div>
-				<div class="answers">
-					<input type="radio" id="answer-c" value="c" name="answer">
-					<label for="answer-c" id="answer3"></label>
-				</div>
-				<div class="answers">
-					<input type="radio" id="answer-d" value="d" name="answer">
-					<label for="answer-d" id="answer4"></label>
-				</div>
-			</div>
-			<div class="btn-wrap">
-				<button id ="btn-prev">Prev</button>
-				<button id ="btn-next">Next</button>
-				<button id="btn-submit">Submit</button>
-			</div>
-		</form>
+		<div id="form">
+			<form action="#" class="form">
+			</form>
+			<form action="#" class="form none">
+			</form>
+			<form action="#" class="form none">
+			</form>
+			<form action="#"class="form none">
+			</form>
+		</div>
+		<div class="btn-wrap">
+			<button id ="btn-prev">Prev</button>
+			<button id ="btn-next">Next</button>
+			<button id="btn-submit">Submit</button>
+		</div>
 		<div id="result">50/50 </div>
 	</main>
 	<script>
@@ -178,24 +168,41 @@
 			correctAnswer: 'a'
 		}
 		]
-		document.getElementsByClassName("question")[0].innerHTML =  questionData[0].question
+
 		var btnNext = document.getElementById("btn-next")
 		var btnPrev = document.getElementById("btn-prev")
 		var btnSubmit = document.getElementById("btn-submit")
 		var question = document.getElementsByClassName("question")[0]
-		document.getElementById("answer1").innerHTML = questionData[0].answers.a
-		document.getElementById("answer2").innerHTML = questionData[0].answers.b
-		document.getElementById("answer3").innerHTML = questionData[0].answers.c
-		document.getElementById("answer4").innerHTML = questionData[0].answers.d
+		for( j in questionData){
+			document.getElementsByClassName('form')[j].innerHTML = `<div class="question-wrap">
+			<div class="question">${questionData[j].question}</div>
+			</div>
+			<div class="answer-wrap">
+			<div class="answers">
+			<input type="radio" id="answer-a${j}" value="a" name="answer" class = "value${j}">
+			<label for="answer-a${j}" id="answer1">${questionData[j].answers.a}</label>
+			</div>
+			<div class="answers">
+			<input type="radio" id="answer-b${j}" value="b" name="answer" class = "value${j}">
+			<label for="answer-b${j}" id="answer2">${questionData[j].answers.b}</label>
+			</div>
+			<div class="answers">
+			<input type="radio" id="answer-c${j}" value="c" name="answer" class = "value${j}">
+			<label for="answer-c${j}" id="answer3">${questionData[j].answers.c}</label>
+			</div>
+			<div class="answers">
+			<input type="radio" id="answer-d${j}" value="d" name="answer" class = "value${j}">
+			<label for="answer-d${j}" id="answer4">${questionData[j].answers.d}</label>
+			</div>
+			</div>`
+		}
 
 		let i = 0;
 		btnNext.addEventListener('click', function() {
 			i++;
-			document.getElementById("answer1").innerHTML = questionData[i].answers.a
-			document.getElementById("answer2").innerHTML = questionData[i].answers.b
-			document.getElementById("answer3").innerHTML = questionData[i].answers.c
-			document.getElementById("answer4").innerHTML = questionData[i].answers.d
-			question.innerHTML =  questionData[i].question
+			document.getElementsByClassName('form')[i-1].classList.add("none")
+			document.getElementsByClassName('form')[i].classList.remove("none")
+
 			if( i == questionData.length - 1){
 				btnNext.style.display  = "none"
 				btnSubmit.style.display = "block"
@@ -204,13 +211,11 @@
 				btnPrev.style.display = "block"
 			}
 		})
+
 		btnPrev.addEventListener('click', function() {
 			i--;
-			document.getElementById("answer1").innerHTML = questionData[i].answers.a
-			document.getElementById("answer2").innerHTML = questionData[i].answers.b
-			document.getElementById("answer3").innerHTML = questionData[i].answers.c
-			document.getElementById("answer4").innerHTML = questionData[i].answers.d
-			question.innerHTML =  questionData[i].question
+			document.getElementsByClassName('form')[i+1].classList.add("none")
+			document.getElementsByClassName('form')[i].classList.remove("none")
 			if( i < questionData.length - 1){
 				btnNext.style.display = "block"
 				btnSubmit.style.display = "none"
@@ -222,8 +227,8 @@
 
 		btnSubmit.addEventListener('click', function() {
 			let point = 0 ;
-			let input = document.getElementsByTagName('input')
 			for (let j in questionData){
+				let input = document.getElementsByClassName(`value${j}`)
 				for(let x of input){
 					if(x.checked && x.value == questionData[j].correctAnswer){
 						point ++;
@@ -231,6 +236,7 @@
 				}
 			}
 			document.getElementById("form").style.display = "none"
+			document.getElementsByClassName("btn-wrap")[0].style.display = "none"
 			document.getElementById("result").innerHTML =  `${point}/${questionData.length}`
 			document.getElementById("result").style.display = "block"
 		})
