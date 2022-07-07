@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">4
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			box-sizing: border-box;
+		}
+		body{
+			background-color: #353b48;
+			padding: 50px 100px 100px 100px;
+		}
+		h1{
+			font-size:50px;
+			color:#eb4d4b;
+			font-weight: bold;
+			font-style: italic;
+			text-align: center;
+			margin-bottom: 50px;
+		}
+		main{
+			background-color: #57606f;
+			height: 480px;
+			border:10px solid #eb4d4b;
+			border-radius: 10px;
+			padding:70px;
+		}
+		.question-wrap{
+			border:2px solid #f0932b;
+			border-radius: 20px;
+			padding:20px;
+			color:white;
+		}
+		.question{
+			font-size:20px;
+			margin-left:10px;
+			text-align: center;
+		}
+		.answer-wrap{
+			display:flex;
+			flex-wrap:wrap;
+		}
+		.answers{
+			width: 50%;
+			margin-top:30px;
+			padding:10px 20px 10px 20px;
+			border:2px solid #f0932b;
+			border-radius: 20px;
+			justify-content: space-around;
+			color:white;
+			font-size:18px;
+		}
+		.btn-wrap{
+			margin-top:20px;
+			display:flex;
+			justify-content: center;
+		}
+		button{
+			padding:10px 30px;
+			color: white;
+			border:2px solid #f0932b;
+			font-size:18px;
+			background-color: #57606f;
+			border-radius: 5px;
+			margin:5px;
+		}
+		button:hover{
+			padding:12px 32px;
+			transition: 0.5s;
+			background-color: #eb4d4b;
+		}
+		#btn-submit{
+			display:none;
+			background-color: #55efc4;
+		}
+		#btn-prev{
+			display:none;
+		}
+		#result{
+			width: 300px;
+			height: 300px;
+			line-height: 300px;
+			font-size:100px;
+			color: #f0932b;
+			font-weight: bold;
+			font-style: italic;
+			text-align: center;
+			border:10px solid #f0932b;
+			margin:20px auto;
+			border-radius: 50%;
+			display:none;
+		}
+		.none{
+			display:none;
+		}
+	</style>
+	<title>Test</title>
+</head>
+<body>
+	<h1>Question</h1>
+	<main>
+		<div id="form">
+			<form action="#" class="form">
+			</form>
+			<form action="#" class="form none">
+			</form>
+			<form action="#" class="form none">
+			</form>
+			<form action="#"class="form none">
+			</form>
+		</div>
+		<div class="btn-wrap">
+			<button id ="btn-prev">Prev</button>
+			<button id ="btn-next">Next</button>
+			<button id="btn-submit">Submit</button>
+		</div>
+		<div id="result">50/50 </div>
+	</main>
+	<script>
+		questionData = [
+		{
+			question: 'Javascript is _________ language.',
+			answers: {
+				a: 'Programming',
+				b: 'Application',
+				c: 'None of These',
+				d: 'Scripting'
+			},
+			multi: false,
+			correctAnswer: 'a'
+		},
+		{
+			question:
+			'Which of the following is a valid type of function javascript supports?',
+			answers: {
+				a: 'named function',
+				b: 'anonymous function',
+				c: 'both of the above',
+				d: 'none of the above'
+			},
+			multi: false,
+			correctAnswer: 'c'
+		},
+		{
+			question:
+			'Which built-in method returns the index within the calling String object of the first occurrence of the specified value?',
+			answers: {
+				a: 'getIndex()',
+				b: 'location()',
+				c: 'indexOf()',
+				d: 'getLocation()'
+			},
+			multi: false,
+			correctAnswer: 'c'
+		},
+		{
+			question: 'Which one of the following is valid data type of JavaScript',
+			answers: {
+				a: 'number',
+				b: 'void',
+				c: 'boolean',
+				d: 'nothing'
+			},
+			multi: false,
+			correctAnswer: 'a'
+		}
+		]
+
+		var btnNext = document.getElementById("btn-next")
+		var btnPrev = document.getElementById("btn-prev")
+		var btnSubmit = document.getElementById("btn-submit")
+		var question = document.getElementsByClassName("question")[0]
+		for( j in questionData){
+			document.getElementsByClassName('form')[j].innerHTML = `<div class="question-wrap">
+			<div class="question">${questionData[j].question}</div>
+			</div>
+			<div class="answer-wrap">
+			<div class="answers">
+			<input type="radio" id="answer-a${j}" value="a" name="answer" class = "value${j}">
+			<label for="answer-a${j}" id="answer1">${questionData[j].answers.a}</label>
+			</div>
+			<div class="answers">
+			<input type="radio" id="answer-b${j}" value="b" name="answer" class = "value${j}">
+			<label for="answer-b${j}" id="answer2">${questionData[j].answers.b}</label>
+			</div>
+			<div class="answers">
+			<input type="radio" id="answer-c${j}" value="c" name="answer" class = "value${j}">
+			<label for="answer-c${j}" id="answer3">${questionData[j].answers.c}</label>
+			</div>
+			<div class="answers">
+			<input type="radio" id="answer-d${j}" value="d" name="answer" class = "value${j}">
+			<label for="answer-d${j}" id="answer4">${questionData[j].answers.d}</label>
+			</div>
+			</div>`
+		}
+
+		let i = 0;
+		btnNext.addEventListener('click', function() {
+			i++;
+			document.getElementsByClassName('form')[i-1].classList.add("none")
+			document.getElementsByClassName('form')[i].classList.remove("none")
+
+			if( i == questionData.length - 1){
+				btnNext.style.display  = "none"
+				btnSubmit.style.display = "block"
+			}
+			if( i != 0){
+				btnPrev.style.display = "block"
+			}
+		})
+
+		btnPrev.addEventListener('click', function() {
+			i--;
+			document.getElementsByClassName('form')[i+1].classList.add("none")
+			document.getElementsByClassName('form')[i].classList.remove("none")
+			if( i < questionData.length - 1){
+				btnNext.style.display = "block"
+				btnSubmit.style.display = "none"
+			}
+			if( i == 0 ){
+				btnPrev.style.display = "none"
+			}
+		})
+
+		btnSubmit.addEventListener('click', function() {
+			let point = 0 ;
+			for (let j in questionData){
+				let input = document.getElementsByClassName(`value${j}`)
+				for(let x of input){
+					if(x.checked && x.value == questionData[j].correctAnswer){
+						point ++;
+					}
+				}
+			}
+			document.getElementById("form").style.display = "none"
+			document.getElementsByClassName("btn-wrap")[0].style.display = "none"
+			document.getElementById("result").innerHTML =  `${point}/${questionData.length}`
+			document.getElementById("result").style.display = "block"
+		})
+	</script>
+</body>
+</html>
